@@ -9,11 +9,11 @@ In the previous md files you have learned how to call the resolve/reject method 
 
 ```JS
 let resolvedPromise = new Promise((res, rej) => {
-  res('resolved')
+  res('resolved');
 })
 
 let rejectedPromise = new Promise((res, rej) => {
-  rej('rejected')
+  rej('rejected');
 })
 ```
 

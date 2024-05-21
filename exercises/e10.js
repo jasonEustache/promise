@@ -1,17 +1,28 @@
 export const getFirstResolvedPromise = (promises) => {
-  //*  write code to pass test ⬇ ️
+  return Promise.any(promises);
 };
 
 export const getFirstPromiseOrFail = (promises) => {
-  //*  write code to pass test ⬇ ️
+  return Promise.race(promises);
 };
 
 export const getQuantityOfRejectedPromises = (promises) => {
-  //*  write code to pass test ⬇ ️
+  return Promise.allSettled(promises).then((prom) => {
+    const filter = prom.filter((obj) => {
+      return obj.status === "rejected";
+    });
+    return filter.length;
+  });
 };
 
 export const getQuantityOfFulfilledPromises = (promises) => {
-  //*  write code to pass test ⬇ ️
+  return Promise.allSettled(promises).then((prom) => {
+    const filter = prom.filter((obj) => {
+      return obj.status === "fulfilled";
+    });
+
+    return filter.length;
+  });
 };
 
 //!  ⬇ ⬇ ⬇ ⬇ Don't Edit This Array ⬇ ⬇ ⬇ ⬇
@@ -42,6 +53,26 @@ export const fetchCharacterById = (id) => {
 //! ⬆  ⬆  ⬆  ⬆ do not edit this function   ⬆  ⬆  ⬆  ⬆ ️
 
 export const fetchAllCharactersByIds = async (ids) => {
+  return Promise.allSettled(ids).then((id) => {
+    if (id.length > 3) {
+      return [];
+    }
+    const arrayOfIds = id.map((id) => {
+      return id.value;
+    });
+
+    const promises = arrayOfIds.map((id) => {
+      return fetchCharacterById(id);
+    });
+
+    return Promise.allSettled(promises).then((names) => {
+      const array = names.map((name) => {
+        return name.value;
+      });
+      return array;
+    });
+  });
+
   // To solve this you must fetch all characters passed in the array at the same time
   // use the `fetchCharacterById` function above to make this work
   //*  write code to pass test ⬇ ️

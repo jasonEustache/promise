@@ -2,7 +2,6 @@
  * PROMISES ARE ALWAYS ASYNCHRONOUS
  * Please, make sure to read the "03-Always-asynchronous.md" file in exercises-info folder before you start!
  */
-
 /**
  * @task
  * * Create function that follows the steps:
@@ -14,8 +13,16 @@
  * * getPromise(num) function must be exported
  * Example: export const getPromise(num) => return <Your code of promise>
  */
-export const getPromise = () => {
+
+export const getPromise = (num) => {
   // Your code goes here...
+  if (Number.isInteger(num)) {
+    return new Promise((resolve) => {
+      resolve(num);
+    });
+  } else {
+    return 0;
+  }
 };
 
 /**
@@ -29,8 +36,14 @@ export const getPromise = () => {
  * * Returns the sum value
  * * if you have solved it successfully, the updateSumValue() function will return the value of 10;
  */
+
 export const updateSumValue = () => {
   // Your code goes here...
+  let sum = 2;
+  getPromise(120).then((data) => {
+    sum + data;
+  });
+  return (sum += 8);
 };
 
 // === TEST YOURSELF ===
