@@ -16,11 +16,9 @@
 
 export const handlePromise = () => {
   // Your code goes here...
-  const promise = new Promise((resolve, reject) => {
+  return new Promise((_resolve, reject) => {
     reject("REJECTED!");
-  });
-
-  return promise
+  })
     .then((data) => {
       data;
     })

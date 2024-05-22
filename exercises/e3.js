@@ -43,7 +43,8 @@ export const updateSumValue = () => {
   getPromise(120).then((data) => {
     sum + data;
   });
-  return (sum += 8);
+  sum += 8;
+  return sum;
 };
 
 // === TEST YOURSELF ===

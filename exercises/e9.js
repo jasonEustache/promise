@@ -66,12 +66,12 @@ export function onReject(err) {
  */
 
 // Your code goes here...
-export const promise = Promise.resolve(iterate)
+export const promise = Promise.resolve(iterate(1))
   .then((data) => iterate(data))
   .then((data) => iterate(data))
   .then((data) => iterate(data))
   .then((data) => iterate(data))
-  .then((data) => iterate(data))
+
   .then(() => alwaysThrows())
   .then((data) => iterate(data))
   .then((data) => iterate(data))

@@ -59,7 +59,11 @@ export const handlePromise = (promise) => {
       return data;
     })
     .catch((err) => {
-      console.log(err.message);
+      if (err.message) {
+        return onReject(err);
+      } else {
+        return err;
+      }
     });
 };
 

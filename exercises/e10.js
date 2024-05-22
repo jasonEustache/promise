@@ -8,10 +8,9 @@ export const getFirstPromiseOrFail = (promises) => {
 
 export const getQuantityOfRejectedPromises = (promises) => {
   return Promise.allSettled(promises).then((prom) => {
-    const filter = prom.filter((obj) => {
+    return prom.filter((obj) => {
       return obj.status === "rejected";
-    });
-    return filter.length;
+    }).length;
   });
 };
 
@@ -53,26 +52,18 @@ export const fetchCharacterById = (id) => {
 //! ⬆  ⬆  ⬆  ⬆ do not edit this function   ⬆  ⬆  ⬆  ⬆ ️
 
 export const fetchAllCharactersByIds = async (ids) => {
-  return Promise.allSettled(ids).then((id) => {
-    if (id.length > 3) {
-      return [];
-    }
-    const arrayOfIds = id.map((id) => {
-      return id.value;
-    });
-
-    const promises = arrayOfIds.map((id) => {
-      return fetchCharacterById(id);
-    });
-
-    return Promise.allSettled(promises).then((names) => {
-      const array = names.map((name) => {
-        return name.value;
-      });
-      return array;
-    });
+  console.log(ids);
+  const promiseArray = ids.map((id) => {
+    return fetchCharacterById(id);
   });
 
+  return Promise.all(promiseArray)
+    .then((res) => {
+      return res;
+    })
+    .catch(() => {
+      return [];
+    });
   // To solve this you must fetch all characters passed in the array at the same time
   // use the `fetchCharacterById` function above to make this work
   //*  write code to pass test ⬇ ️

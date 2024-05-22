@@ -60,8 +60,9 @@ export const result = getData
     return data.json();
   })
   .then((res) => {
-    console.log(getLoginList(res));
-    return getLoginList(res);
+    const result = getLoginList(res);
+    console.log(result);
+    return result;
   });
 
 // === TEST YOURSELF ===

@@ -21,18 +21,17 @@ export const attachTitle = (someName) => {
  */
 
 export const getPromise = () => {
-  const promise = new Promise((resolve) => {
+  return new Promise((resolve) => {
     resolve("MANHATTAN");
   })
     .then((data) => {
-      const name = attachTitle(data);
-      console.log(name);
-      return name;
+      console.log(data);
+      return attachTitle(data);
     })
     .then((value) => {
+      console.log(value);
       return value;
     });
-  return promise;
 };
 
 // === TEST YOURSELF ===
