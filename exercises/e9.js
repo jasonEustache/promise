@@ -40,6 +40,7 @@ export function onReject(err) {
   // Your code goes here...
   if (err.message) {
     console.log(err.message);
+    return;
   }
   console.log(err);
 }

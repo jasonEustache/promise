@@ -23,13 +23,10 @@ const second = (val) => {
 
 // Refactor the following code...
 export const handlePromise = first()
-  .then((val) => {
-    console.log(val);
-    return val;
-  })
+  .then((data) => second(data))
   .then((res) => {
     console.log(res);
-    return second(res);
+    return res;
   });
 
 // === TEST YOURSELF ===
